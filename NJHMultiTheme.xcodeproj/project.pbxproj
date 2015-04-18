@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E99243761AE2E802007CA25B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99243751AE2E802007CA25B /* AppKit.framework */; };
+		E99243781AE2E802007CA25B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99243771AE2E802007CA25B /* Foundation.framework */; };
+		E992437D1AE2E802007CA25B /* NJHMultiTheme.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = E992437C1AE2E802007CA25B /* NJHMultiTheme.xcscheme */; };
+		E99243801AE2E802007CA25B /* NJHMultiTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E992437F1AE2E802007CA25B /* NJHMultiTheme.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E99243721AE2E802007CA25B /* NJHMultiTheme.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NJHMultiTheme.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		E99243751AE2E802007CA25B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E99243771AE2E802007CA25B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		E992437B1AE2E802007CA25B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E992437C1AE2E802007CA25B /* NJHMultiTheme.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = NJHMultiTheme.xcscheme; path = NJHMultiTheme.xcodeproj/xcshareddata/xcschemes/NJHMultiTheme.xcscheme; sourceTree = SOURCE_ROOT; };
+		E992437E1AE2E802007CA25B /* NJHMultiTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJHMultiTheme.h; sourceTree = "<group>"; };
+		E992437F1AE2E802007CA25B /* NJHMultiTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJHMultiTheme.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E99243701AE2E802007CA25B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E99243761AE2E802007CA25B /* AppKit.framework in Frameworks */,
+				E99243781AE2E802007CA25B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E99243691AE2E802007CA25B = {
+			isa = PBXGroup;
+			children = (
+				E99243791AE2E802007CA25B /* NJHMultiTheme */,
+				E99243741AE2E802007CA25B /* Frameworks */,
+				E99243731AE2E802007CA25B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E99243731AE2E802007CA25B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E99243721AE2E802007CA25B /* NJHMultiTheme.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E99243741AE2E802007CA25B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E99243751AE2E802007CA25B /* AppKit.framework */,
+				E99243771AE2E802007CA25B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E99243791AE2E802007CA25B /* NJHMultiTheme */ = {
+			isa = PBXGroup;
+			children = (
+				E992437E1AE2E802007CA25B /* NJHMultiTheme.h */,
+				E992437F1AE2E802007CA25B /* NJHMultiTheme.m */,
+				E992437A1AE2E802007CA25B /* Supporting Files */,
+			);
+			path = NJHMultiTheme;
+			sourceTree = "<group>";
+		};
+		E992437A1AE2E802007CA25B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E992437B1AE2E802007CA25B /* Info.plist */,
+				E992437C1AE2E802007CA25B /* NJHMultiTheme.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E99243711AE2E802007CA25B /* NJHMultiTheme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E99243831AE2E802007CA25B /* Build configuration list for PBXNativeTarget "NJHMultiTheme" */;
+			buildPhases = (
+				E992436E1AE2E802007CA25B /* Sources */,
+				E992436F1AE2E802007CA25B /* Resources */,
+				E99243701AE2E802007CA25B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NJHMultiTheme;
+			productName = NJHMultiTheme;
+			productReference = E99243721AE2E802007CA25B /* NJHMultiTheme.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E992436A1AE2E802007CA25B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Nathan Hosselton";
+				TargetAttributes = {
+					E99243711AE2E802007CA25B = {
+						CreatedOnToolsVersion = 6.3;
+					};
+				};
+			};
+			buildConfigurationList = E992436D1AE2E802007CA25B /* Build configuration list for PBXProject "NJHMultiTheme" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E99243691AE2E802007CA25B;
+			productRefGroup = E99243731AE2E802007CA25B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E99243711AE2E802007CA25B /* NJHMultiTheme */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E992436F1AE2E802007CA25B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E992437D1AE2E802007CA25B /* NJHMultiTheme.xcscheme in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E992436E1AE2E802007CA25B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E99243801AE2E802007CA25B /* NJHMultiTheme.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E99243811AE2E802007CA25B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		E99243821AE2E802007CA25B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		E99243841AE2E802007CA25B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = NJHMultiTheme/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		E99243851AE2E802007CA25B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = NJHMultiTheme/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E992436D1AE2E802007CA25B /* Build configuration list for PBXProject "NJHMultiTheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E99243811AE2E802007CA25B /* Debug */,
+				E99243821AE2E802007CA25B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E99243831AE2E802007CA25B /* Build configuration list for PBXNativeTarget "NJHMultiTheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E99243841AE2E802007CA25B /* Debug */,
+				E99243851AE2E802007CA25B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E992436A1AE2E802007CA25B /* Project object */;
+}
