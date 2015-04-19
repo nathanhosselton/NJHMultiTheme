@@ -6,7 +6,6 @@ static NSString *kPluginIdentifier = @"NJHMultiTheme";
 static NSString *kObjcTheme = @"ObjcThemeName";
 static NSString *kSwiftTheme = @"SwiftThemeName";
 static NSString *kThemeNameSuffix = @".dvtcolortheme";
-static NSString *kGeneralUIChange = @"DVTFontAndColorGeneralUISettingsChangedNotification";
 static NSString *kFileChange = @"transition from one file to another";
 
 typedef NS_ENUM(NSInteger, MTFileType) {
@@ -47,7 +46,6 @@ typedef NS_ENUM(NSInteger, MTFileType) {
         [self loadPreferences];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDidChange:) name:kFileChange object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(themeDidChange:) name:kGeneralUIChange object:nil];
 
         NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
         if (menuItem) {
@@ -149,32 +147,6 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     }
 }
 
-//-(void)themeDidChange:(NSNotification *)note {
-//    if (fileChangeInProgress)
-//        return;
-//
-//    NSString *themeName = self.activeThemeName;
-//    BOOL didUpdate = NO;
-//
-//    switch (currentFileType) {
-//        case MTFileTypeObjC:
-//            if (![objcTheme isEqualToString:themeName]) {
-//                objcTheme = themeName;
-//                didUpdate = YES;
-//            }
-//            break;
-//        case MTFileTypeSwift:
-//            if (![swiftTheme isEqualToString:themeName]) {
-//                swiftTheme = themeName;
-//                didUpdate = YES;
-//            }
-//            break;
-//    }
-//
-//    if (didUpdate)
-//        [self savePreferences];
-//}
-
 - (id)preferenceSetsManager {
     Class DVTFontAndColorTheme = NSClassFromString(@"DVTFontAndColorTheme");
     SEL selector = NSSelectorFromString(@"preferenceSetsManager");
@@ -208,8 +180,8 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 
 - (void)savePreferences {
     NSMutableDictionary *defaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier].mutableCopy;
-    [defaults setObject:objcTheme ?: swiftTheme forKey:kObjcTheme];
-    [defaults setObject:swiftTheme ?: objcTheme forKey:kSwiftTheme];
+    [defaults setObject:objcTheme forKey:kObjcTheme];
+    [defaults setObject:swiftTheme forKey:kSwiftTheme];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:defaults forName:kPluginIdentifier];
 }
 
