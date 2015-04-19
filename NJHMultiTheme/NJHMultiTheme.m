@@ -2,7 +2,7 @@
 
 
 static NJHMultiTheme *sharedPlugin;
-static NSString *kPluginIdentifier = @"NJHMultiTheme";
+static NSString *kPluginIdentifier = @"com.NathanHosselton.MultiTheme";
 static NSString *kObjcTheme = @"ObjcThemeName";
 static NSString *kSwiftTheme = @"SwiftThemeName";
 static NSString *kThemeNameSuffix = @".dvtcolortheme";
@@ -179,10 +179,11 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 }
 
 - (void)savePreferences {
-    NSMutableDictionary *defaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier].mutableCopy;
+    NSMutableDictionary *defaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier].mutableCopy ?: [NSMutableDictionary new];
     [defaults setObject:objcTheme forKey:kObjcTheme];
     [defaults setObject:swiftTheme forKey:kSwiftTheme];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:defaults forName:kPluginIdentifier];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)dealloc {
