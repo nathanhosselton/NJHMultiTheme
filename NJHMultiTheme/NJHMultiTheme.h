@@ -7,5 +7,5 @@
 
 
 @interface NSMenu (MultiTheme)
-- (NSMenuItem *)addItemWithTitle:(NSString *)aString target:(id)target action:(SEL)aSelector;
+- (NSMenuItem *)addItemWithTitle:(NSString *)title target:(id)target action:(SEL)selector;
 @end

@@ -1,3 +1,5 @@
+//TODO: Detect theme additions/removals and update menus
+
 #import "NJHMultiTheme.h"
 
 
@@ -7,6 +9,7 @@ static NSString *kObjcTheme = @"ObjcThemeName";
 static NSString *kSwiftTheme = @"SwiftThemeName";
 static NSString *kThemeNameSuffix = @".dvtcolortheme";
 static NSString *kFileChange = @"transition from one file to another";
+static NSString *kProjectChange = @"DVTSourceExpressionUnderMouseDidChangeNotification";
 
 typedef NS_ENUM(NSInteger, MTFileType) {
     MTFileTypeObjC = 1,
@@ -20,9 +23,9 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 
 @implementation NJHMultiTheme {
     MTFileType currentFileType;
+    NSString *currentProject;
     NSString *objcTheme;
     NSString *swiftTheme;
-    BOOL fileChangeInProgress;
 }
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
@@ -42,35 +45,10 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 - (id)initWithBundle:(NSBundle *)plugin {
     if (self = [super init]) {
         self.bundle = plugin;
-
         [self loadPreferences];
-
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDidChange:) name:kFileChange object:nil];
-
-        NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
-        if (menuItem) {
-            [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-            NSMenuItem *swiftMenuItem = [NSMenuItem new];
-            swiftMenuItem.title = @"Set Swift Theme";
-            NSMenuItem *objcMenuItem = [NSMenuItem new];
-            objcMenuItem.title = @"Set Obj-C Theme";
-            NSMenu *swiftMenu = [NSMenu new];
-            NSMenu *objcMenu = [NSMenu new];
-            NSArray *themes = self.availableThemes;
-            NSMutableArray *themeNames = [NSMutableArray arrayWithCapacity:themes.count];
-            for (id theme in themes)
-                [themeNames addObject:[[theme name] stringByReplacingOccurrencesOfString:kThemeNameSuffix withString:@""]];
-            for (NSString *name in themeNames) {
-                NSMenuItem *swiftItem = [swiftMenu addItemWithTitle:name target:self action:@selector(updateSwiftTheme:)];
-                NSMenuItem *objcItem = [objcMenu addItemWithTitle:name target:self action:@selector(updateObjcTheme:)];
-                swiftItem.state = (int)[swiftTheme isEqualToString:[name stringByAppendingString:kThemeNameSuffix]];
-                objcItem.state = (int)[objcTheme isEqualToString:[name stringByAppendingString:kThemeNameSuffix]];
-            }
-            [swiftMenuItem setSubmenu:swiftMenu];
-            [objcMenuItem setSubmenu:objcMenu];
-            [[menuItem submenu] addItem:swiftMenuItem];
-            [[menuItem submenu] addItem:objcMenuItem];
-        }
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectDidChange:) name:kProjectChange object:nil];
+        [self addMTMenuToMenuItem:[[NSApp mainMenu] itemWithTitle:@"Edit"]];
     }
     return self;
 }
@@ -83,14 +61,33 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     SEL selector = NSSelectorFromString(@"documentURLString");
     IMP imp = [loc methodForSelector:selector];
     id (*func)(id, SEL) = (void *)imp;
-    NSString *fileURLString = func(loc, selector);
+    id fileName = func(loc, selector);
 
+    [self verifyFile:fileName];
+}
+
+-(void)projectDidChange:(NSNotification *)note {
+    NSString *nextProject = [[note object] description];
+    if (!nextProject || [nextProject isEqualToString:currentProject])
+        return;
+
+    currentProject = nextProject;
+    id sourceCodeEditor = [note userInfo][@"DVTSourceExpressionUserInfoKey"];
+    SEL selector = NSSelectorFromString(@"sourceCodeDocument");
+    IMP imp = [sourceCodeEditor methodForSelector:selector];
+    id (*func)(id, SEL) = (void *)imp;
+    NSDocument *sourceCodeDocument = func(sourceCodeEditor, selector);
+
+    [self verifyFile:[sourceCodeDocument fileURL].absoluteString];
+}
+
+- (void)verifyFile:(NSString *)fileName {
     MTFileType nextType;
 
-    if ([[fileURLString substringWithRange:NSMakeRange(fileURLString.length - 2, 2)] isEqualToString:@".h"] ||
-        [[fileURLString substringWithRange:NSMakeRange(fileURLString.length - 2, 2)] isEqualToString:@".m"])
+    if ([[fileName substringWithRange:NSMakeRange(fileName.length - 2, 2)] isEqualToString:@".h"] ||
+        [[fileName substringWithRange:NSMakeRange(fileName.length - 2, 2)] isEqualToString:@".m"])
         nextType = MTFileTypeObjC;
-    else if ([[fileURLString substringWithRange:NSMakeRange(fileURLString.length - 6, 6)] isEqualToString:@".swift"])
+    else if ([[fileName substringWithRange:NSMakeRange(fileName.length - 6, 6)] isEqualToString:@".swift"])
         nextType = MTFileTypeSwift;
 
     if (!nextType || nextType == currentFileType)
@@ -147,6 +144,35 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     }
 }
 
+- (void)addMTMenuToMenuItem:(NSMenuItem *)menuItem {
+    if (!menuItem)
+        return;
+    NSMenuItem *swiftMenuItem = [NSMenuItem new];
+    NSMenuItem *objcMenuItem = [NSMenuItem new];
+    NSMenu *swiftMenu = [NSMenu new];
+    NSMenu *objcMenu = [NSMenu new];
+
+    swiftMenuItem.title = @"Set Swift Theme";
+    objcMenuItem.title = @"Set Objective-C Theme";
+
+    NSArray *themes = self.availableThemes;
+    for (id theme in themes) {
+        NSString *name = [theme name];
+        NSString *cleanName = [name stringByReplacingOccurrencesOfString:kThemeNameSuffix withString:@""];
+
+        NSMenuItem *swiftItem = [swiftMenu addItemWithTitle:cleanName target:self action:@selector(updateSwiftTheme:)];
+        swiftItem.state = (int)[swiftTheme isEqualToString:name];
+        NSMenuItem *objcItem = [objcMenu addItemWithTitle:cleanName target:self action:@selector(updateObjcTheme:)];
+        objcItem.state = (int)[objcTheme isEqualToString:name];
+    }
+
+    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    [swiftMenuItem setSubmenu:swiftMenu];
+    [objcMenuItem setSubmenu:objcMenu];
+    [[menuItem submenu] addItem:swiftMenuItem];
+    [[menuItem submenu] addItem:objcMenuItem];
+}
+
 - (id)preferenceSetsManager {
     Class DVTFontAndColorTheme = NSClassFromString(@"DVTFontAndColorTheme");
     SEL selector = NSSelectorFromString(@"preferenceSetsManager");
@@ -172,14 +198,16 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     return [newTheme name];
 }
 
+#define MTDefaults [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier]
+
 - (void)loadPreferences {
-    NSDictionary *defaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier];
+    NSDictionary *defaults = MTDefaults;
     objcTheme = defaults[kObjcTheme] ?: self.activeThemeName;
     swiftTheme = defaults[kSwiftTheme] ?: self.activeThemeName;
 }
 
 - (void)savePreferences {
-    NSMutableDictionary *defaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier].mutableCopy ?: [NSMutableDictionary new];
+    NSMutableDictionary *defaults = MTDefaults.mutableCopy ?: [NSMutableDictionary new];
     [defaults setObject:objcTheme forKey:kObjcTheme];
     [defaults setObject:swiftTheme forKey:kSwiftTheme];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:defaults forName:kPluginIdentifier];

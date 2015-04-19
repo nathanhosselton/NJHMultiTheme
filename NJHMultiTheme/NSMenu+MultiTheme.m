@@ -2,8 +2,8 @@
 
 @implementation NSMenu (MultiTheme)
 
-- (NSMenuItem *)addItemWithTitle:(NSString *)aString target:(id)target action:(SEL)aSelector {
-    NSMenuItem *item = [self addItemWithTitle:aString action:aSelector keyEquivalent:@""];
+- (NSMenuItem *)addItemWithTitle:(NSString *)title target:(id)target action:(SEL)selector {
+    NSMenuItem *item = [self addItemWithTitle:title action:selector keyEquivalent:@""];
     [item setTarget:target];
     return item;
 }
