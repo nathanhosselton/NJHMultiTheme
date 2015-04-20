@@ -54,7 +54,9 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 }
 
 - (void)fileDidChange:(NSNotification *)note {
-    if (![note.object count])
+    NSToolbarItem *editorItem = [[[NSApp mainWindow] toolbar].items objectAtIndex:5];
+    NSSegmentedControl *control = (NSSegmentedControl *)[editorItem view];
+    if (![note.object count] || control.selectedSegment == 1)
         return;
 
     id loc = note.object[@"next"];

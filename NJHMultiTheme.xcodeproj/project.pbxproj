@@ -22,7 +22,6 @@
 		E992437C1AE2E802007CA25B /* NJHMultiTheme.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = NJHMultiTheme.xcscheme; path = NJHMultiTheme.xcodeproj/xcshareddata/xcschemes/NJHMultiTheme.xcscheme; sourceTree = SOURCE_ROOT; };
 		E992437E1AE2E802007CA25B /* NJHMultiTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJHMultiTheme.h; sourceTree = "<group>"; };
 		E992437F1AE2E802007CA25B /* NJHMultiTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJHMultiTheme.m; sourceTree = "<group>"; };
-		E99243861AE3063F007CA25B /* TestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
 		E9D1EFBF1AE32455007F8C98 /* NSMenu+MultiTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenu+MultiTheme.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,7 +70,6 @@
 				E992437E1AE2E802007CA25B /* NJHMultiTheme.h */,
 				E992437F1AE2E802007CA25B /* NJHMultiTheme.m */,
 				E9D1EFBF1AE32455007F8C98 /* NSMenu+MultiTheme.m */,
-				E99243861AE3063F007CA25B /* TestFile.swift */,
 				E992437A1AE2E802007CA25B /* Supporting Files */,
 			);
 			path = NJHMultiTheme;
