@@ -12,7 +12,8 @@ static NSString *kFileChange = @"transition from one file to another";
 static NSString *kProjectChange = @"DVTSourceExpressionUnderMouseDidChangeNotification";
 
 typedef NS_ENUM(NSInteger, MTFileType) {
-    MTFileTypeObjC = 1,
+    MTFileTypeOther,
+    MTFileTypeObjC,
     MTFileTypeSwift
 };
 
@@ -91,12 +92,13 @@ typedef NS_ENUM(NSInteger, MTFileType) {
         nextType = MTFileTypeObjC;
     else if ([[fileName substringWithRange:NSMakeRange(fileName.length - 6, 6)] isEqualToString:@".swift"])
         nextType = MTFileTypeSwift;
+    else
+        nextType = currentFileType = MTFileTypeOther;
 
-    if (!nextType || nextType == currentFileType)
-        return; //NOTE: Unsupported source files will use active theme
-
-    currentFileType = nextType;
-    [self changeActiveTheme];
+    if (nextType != currentFileType) {
+        currentFileType = nextType;
+        [self changeActiveTheme];
+    }
 }
 
 - (void)updateObjcTheme:(NSMenuItem *)item {
@@ -142,6 +144,8 @@ typedef NS_ENUM(NSInteger, MTFileType) {
             for (id theme in themes)
                 if ([[theme name] isEqualToString:swiftTheme])
                     func(mgr, setCurrentPreferenceSet, theme);
+            break;
+        default:
             break;
     }
 }
