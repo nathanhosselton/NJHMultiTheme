@@ -16,5 +16,5 @@ rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/NJHMultiTh
 
 ## Considerations
 While the vast majority of use cases will see MultiTheme function as you would expect, there are edge cases where behavior is not as refined as I would like.
-* When switching between multiple open projects, theme changing is not as quick when landing on a different file type and may sometimes flicker. Clicking into the source editor will settle this.
+* When switching projects and landing on a different file type, theme changing is not as quick and may sometimes flicker. Clicking into the source editor will settle this.
 * When multiple file types are opened in the Assistant Editor, only the current theme will be used. This is simply a limitation with themes in Xcode. However, manual manipulation of the additional source editor spaces could allow for an effective display of multiple themes at once, which is something I might look into for a future enhancement.
