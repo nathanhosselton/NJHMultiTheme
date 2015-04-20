@@ -4,9 +4,15 @@ Set separate Xcode themes for Swift and Objective-C source files.
 ![](https://raw.githubusercontent.com/nathanhosselton/NJHMultiTheme/master/Screenshot.png)
 
 The selected theme will become active whenever the corresponding source file type has focus.
+
+![](https://raw.githubusercontent.com/nathanhosselton/NJHMultiTheme/master/animated.gif)
 ## Installation
 * Via [Alcatraz](http://alcatraz.io) (recommended)
 * Or simply download and build the project
+
+## Use
+1. Use the new Edit menu items to select the themes you want to use.
+2. Go about your business.
 
 ## Removal
 Use Alcatraz or in Terminal, run:
