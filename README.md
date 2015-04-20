@@ -5,7 +5,7 @@ Set separate Xcode themes for Swift and Objective-C source files.
 
 The selected theme will become active whenever the corresponding source file type has focus.
 ## Installation
-* Via [Alcatraz](http://alcatraz.io)
+* Via [Alcatraz](http://alcatraz.io) (recommended)
 * Or simply download and build the project
 
 ## Removal
