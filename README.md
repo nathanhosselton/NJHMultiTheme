@@ -5,10 +5,11 @@ Set separate Xcode themes for Swift and Objective-C source files.
 
 The selected theme will become active whenever the corresponding source file type has focus.
 ## Installation
-Alcatraz integration is coming soon. In the meantime, simply build the project and restart Xcode.
+* Via [Alcatraz](http://alcatraz.io)
+* Or simply download and build the project
 
 ## Removal
-In Terminal, run:
+Use Alcatraz or in Terminal, run:
 ```
 rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/NJHMultiTheme.xcplugin
 ```
