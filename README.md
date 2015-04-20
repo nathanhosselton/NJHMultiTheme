@@ -1,5 +1,5 @@
 # NJHMultiTheme
-Set separate Xcode themes for Swift and Objective-C source files
+Set separate Xcode themes for Swift and Objective-C source files.
 
 ![NJHMultiTheme](https://dl.dropboxusercontent.com/u/6042414/NJHMultiTheme.png)
 
