@@ -1,7 +1,7 @@
 # NJHMultiTheme
 Set separate Xcode themes for Swift and Objective-C source files.
 
-![NJHMultiTheme](https://dl.dropboxusercontent.com/u/6042414/NJHMultiTheme.png)
+![](https://raw.githubusercontent.com/nathanhosselton/NJHMultiTheme/master/Screenshot.png)
 
 The selected theme will become active whenever the corresponding source file type has focus.
 ## Installation
