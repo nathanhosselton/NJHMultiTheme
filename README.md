@@ -11,7 +11,8 @@ The selected theme will become active whenever the corresponding source file typ
 * Or simply download and build the project
 
 ## Use
-Use the new Edit menu items to select the themes you want to use. Go about your business.
+1. Use the new Edit menu items to select the themes you want to use.
+2. Go about your business.
 
 ## Removal
 Use Alcatraz or in Terminal, run:
