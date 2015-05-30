@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "890A4B3E171F031300AFE577"
+               BlueprintIdentifier = "E99243711AE2E802007CA25B"
                BuildableName = "NJHMultiTheme.xcplugin"
                BlueprintName = "NJHMultiTheme"
                ReferencedContainer = "container:NJHMultiTheme.xcodeproj">
@@ -56,12 +56,13 @@
       allowLocationSimulation = "NO"
       viewDebuggingEnabled = "No">
       <PathRunnable
+         runnableDebuggingMode = "0"
          FilePath = "/Applications/Xcode.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "890A4B3E171F031300AFE577"
+            BlueprintIdentifier = "E99243711AE2E802007CA25B"
             BuildableName = "NJHMultiTheme.xcplugin"
             BlueprintName = "NJHMultiTheme"
             ReferencedContainer = "container:NJHMultiTheme.xcodeproj">
