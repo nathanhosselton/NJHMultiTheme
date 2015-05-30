@@ -47,11 +47,16 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     if (self = [super init]) {
         self.bundle = plugin;
         [self loadPreferences];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:NSApplicationDidFinishLaunchingNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDidChange:) name:kFileChange object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectDidChange:) name:kProjectChange object:nil];
-        [self addMTMenuToMenuItem:[[NSApp mainMenu] itemWithTitle:@"Edit"]];
     }
     return self;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)note {
+    [self addMTMenuToMenuItem:[[NSApp mainMenu] itemWithTitle:@"Edit"]];
 }
 
 - (void)fileDidChange:(NSNotification *)note {
