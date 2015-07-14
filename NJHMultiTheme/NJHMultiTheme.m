@@ -1,5 +1,4 @@
 //TODO: Detect theme additions/removals and update menus
-
 #import "NJHMultiTheme.h"
 
 
