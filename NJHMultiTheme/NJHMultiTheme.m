@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 
 - (void)fileDidChange:(NSNotification *)note {
     NSArray *toolbarItems = [[NSApp mainWindow] toolbar].items;
-    if (!toolbarItems.count)
+    if (toolbarItems.count != 6)
         return;
 
     NSToolbarItem *editorItem = [toolbarItems objectAtIndex:5];
