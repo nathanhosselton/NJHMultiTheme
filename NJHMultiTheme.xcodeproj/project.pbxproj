@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43C242D51B02656200FF4810 /* NSObject+MultiTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C242D41B02656200FF4810 /* NSObject+MultiTheme.m */; };
 		E99243761AE2E802007CA25B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99243751AE2E802007CA25B /* AppKit.framework */; };
 		E99243781AE2E802007CA25B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99243771AE2E802007CA25B /* Foundation.framework */; };
 		E992437D1AE2E802007CA25B /* NJHMultiTheme.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = E992437C1AE2E802007CA25B /* NJHMultiTheme.xcscheme */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43C242D41B02656200FF4810 /* NSObject+MultiTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MultiTheme.m"; sourceTree = "<group>"; };
 		E99243721AE2E802007CA25B /* NJHMultiTheme.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NJHMultiTheme.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99243751AE2E802007CA25B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E99243771AE2E802007CA25B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -70,6 +72,7 @@
 				E992437E1AE2E802007CA25B /* NJHMultiTheme.h */,
 				E992437F1AE2E802007CA25B /* NJHMultiTheme.m */,
 				E9D1EFBF1AE32455007F8C98 /* NSMenu+MultiTheme.m */,
+				43C242D41B02656200FF4810 /* NSObject+MultiTheme.m */,
 				E992437A1AE2E802007CA25B /* Supporting Files */,
 			);
 			path = NJHMultiTheme;
@@ -153,6 +156,7 @@
 			files = (
 				E99243801AE2E802007CA25B /* NJHMultiTheme.m in Sources */,
 				E9D1EFC01AE32455007F8C98 /* NSMenu+MultiTheme.m in Sources */,
+				43C242D51B02656200FF4810 /* NSObject+MultiTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

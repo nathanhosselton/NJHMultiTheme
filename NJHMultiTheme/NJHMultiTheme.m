@@ -70,10 +70,7 @@ typedef NS_ENUM(NSInteger, MTFileType) {
         return;
 
     id loc = note.object[@"next"];
-    SEL selector = NSSelectorFromString(@"documentURLString");
-    IMP imp = [loc methodForSelector:selector];
-    id (*func)(id, SEL) = (void *)imp;
-    id fileName = func(loc, selector);
+    id fileName = [loc mt_get:NSSelectorFromString(@"documentURLString")];
 
     [self verifyFile:fileName];
 }
@@ -85,10 +82,7 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 
     currentProject = nextProject;
     id sourceCodeEditor = [note userInfo][@"DVTSourceExpressionUserInfoKey"];
-    SEL selector = NSSelectorFromString(@"sourceCodeDocument");
-    IMP imp = [sourceCodeEditor methodForSelector:selector];
-    id (*func)(id, SEL) = (void *)imp;
-    NSDocument *sourceCodeDocument = func(sourceCodeEditor, selector);
+    NSDocument *sourceCodeDocument = [sourceCodeEditor mt_get:NSSelectorFromString(@"sourceCodeDocument")];
 
     [self verifyFile:[sourceCodeDocument fileURL].absoluteString];
 }
@@ -137,11 +131,12 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 }
 
 - (void)changeActiveTheme {
-    id mgr = self.preferenceSetsManager;
+    id mgr = [NSClassFromString(@"DVTFontAndColorTheme") mt_get:NSSelectorFromString(@"preferenceSetsManager")];
     SEL setCurrentPreferenceSet = NSSelectorFromString(@"setCurrentPreferenceSet:");
     IMP setTheme = [mgr methodForSelector:setCurrentPreferenceSet];
     void (*func)(id, SEL, id) = (void *)setTheme;
-    NSArray *themes = self.availableThemes;
+
+    NSArray *themes = [mgr mt_get:NSSelectorFromString(@"availablePreferenceSets")];
 
     switch (currentFileType) {
         case MTFileTypeObjC:
@@ -159,9 +154,15 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     }
 }
 
+- (NSString *)activeThemeName {
+    id activeTheme = [NSClassFromString(@"DVTFontAndColorTheme") mt_get:NSSelectorFromString(@"currentTheme")];
+    return [activeTheme name];
+}
+
 - (void)addMTMenuToMenuItem:(NSMenuItem *)menuItem {
     if (!menuItem)
         return;
+
     NSMenuItem *swiftMenuItem = [NSMenuItem new];
     NSMenuItem *objcMenuItem = [NSMenuItem new];
     NSMenu *swiftMenu = [NSMenu new];
@@ -170,7 +171,9 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     swiftMenuItem.title = @"Set Swift Theme";
     objcMenuItem.title = @"Set Objective-C Theme";
 
-    NSArray *themes = self.availableThemes;
+    id mgr = [NSClassFromString(@"DVTFontAndColorTheme") mt_get:NSSelectorFromString(@"preferenceSetsManager")];
+    NSArray *themes = [mgr mt_get:NSSelectorFromString(@"availablePreferenceSets")];
+
     for (id theme in themes) {
         NSString *name = [theme name];
         NSString *cleanName = [name stringByReplacingOccurrencesOfString:kThemeNameSuffix withString:@""];
@@ -186,31 +189,6 @@ typedef NS_ENUM(NSInteger, MTFileType) {
     [objcMenuItem setSubmenu:objcMenu];
     [[menuItem submenu] addItem:swiftMenuItem];
     [[menuItem submenu] addItem:objcMenuItem];
-}
-
-- (id)preferenceSetsManager {
-    Class DVTFontAndColorTheme = NSClassFromString(@"DVTFontAndColorTheme");
-    SEL selector = NSSelectorFromString(@"preferenceSetsManager");
-    IMP imp = [DVTFontAndColorTheme methodForSelector:selector];
-    id (*func)(id, SEL) = (void *)imp;
-    return func(DVTFontAndColorTheme, selector);
-}
-
-- (NSArray *)availableThemes {
-    id mgr = self.preferenceSetsManager;
-    SEL selector = NSSelectorFromString(@"availablePreferenceSets");
-    IMP imp = [mgr methodForSelector:selector];
-    id (*func)(id, SEL) = (void *)imp;
-    return func(mgr, selector);
-}
-
-- (NSString *)activeThemeName {
-    Class DVTFontAndColorTheme = NSClassFromString(@"DVTFontAndColorTheme");
-    SEL currentTheme = NSSelectorFromString(@"currentTheme");
-    IMP impCurrentTheme = [DVTFontAndColorTheme methodForSelector:currentTheme];
-    id (*func)(id, SEL) = (void *)impCurrentTheme;
-    id newTheme = func(DVTFontAndColorTheme, currentTheme);
-    return [newTheme name];
 }
 
 #define MTDefaults [[NSUserDefaults standardUserDefaults] persistentDomainForName:kPluginIdentifier]
