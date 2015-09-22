@@ -60,13 +60,13 @@ typedef NS_ENUM(NSInteger, MTFileType) {
 
 - (void)fileDidChange:(NSNotification *)note {
     NSArray *toolbarItems = [[NSApp mainWindow] toolbar].items;
-    if (toolbarItems.count != 6)
-        return;
 
-    NSToolbarItem *editorItem = [toolbarItems objectAtIndex:5];
-    NSSegmentedControl *control = (NSSegmentedControl *)[editorItem view];
-    if (![note.object count] || control.selectedSegment == 1)
-        return;
+    if (toolbarItems.count >= 6) {
+        NSToolbarItem *editorItem = [toolbarItems objectAtIndex:5];
+        NSSegmentedControl *control = (NSSegmentedControl *)[editorItem view];
+        if (![note.object count] || control.selectedSegment == 1)
+            return;
+    }
 
     id loc = note.object[@"next"];
     id fileName = [loc mt_get:NSSelectorFromString(@"documentURLString")];
